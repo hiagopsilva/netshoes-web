@@ -10,13 +10,14 @@ import {
 } from './styles'
 
 type Props = {
-  onClickWishList: () => void
+  onClickWishList?: () => void
+  goBack?: () => void
 }
 
-const Header: React.FC<Props> = ({ onClickWishList }) => {
+const Header: React.FC<Props> = ({ onClickWishList, goBack }) => {
   return (
     <Container>
-      <Logo />
+      <Logo onClick={goBack} />
 
       <ContentRight>
         <WrapperWishList onClick={onClickWishList}>
