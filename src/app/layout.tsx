@@ -1,21 +1,24 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+'use client'
 
-const inter = Inter({ subsets: ["latin"] });
+import { Inter } from 'next/font/google'
 
-export const metadata: Metadata = {
-  title: "Netshoes",
-  description: "Conecta Você ao Esporte",
-};
+import { GlobalStyles, theme } from '@/styles'
+
+import { ThemeProvider } from 'styled-components'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+    <ThemeProvider theme={theme}>
+      <html lang="pt-BR">
+        <body className={inter.className}>{children}</body>
+        <GlobalStyles />
+      </html>
+    </ThemeProvider>
+  )
 }

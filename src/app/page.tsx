@@ -1,7 +1,11 @@
+'use client'
+
+import { Container } from './styles'
+
 export default function Home() {
   return (
-    <div >
+    <Container>
       <h1>Hello Netshoes</h1>
-    </div>
-  );
+    </Container>
+  )
 }
