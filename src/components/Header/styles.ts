@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import { getTheme, pxToRem } from '@/styles'
 import Image from 'next/image'
 
-import { FaUserCircle } from 'react-icons/fa'
-
 import { CiHeart } from 'react-icons/ci'
 
 const primary = getTheme('primary')
@@ -53,8 +51,3 @@ export const TextWishList = styled.div`
   color: ${baseWhite};
   font-size: ${pxToRem(14)};
 `
-
-export const UserIcon = styled(FaUserCircle).attrs({
-  size: 24,
-  color: '#fff',
-})``

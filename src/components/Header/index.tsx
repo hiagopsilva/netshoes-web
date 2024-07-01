@@ -4,10 +4,10 @@ import {
   ContentRight,
   Logo,
   TextWishList,
-  UserIcon,
   WishListIcon,
   WrapperWishList,
 } from './styles'
+import Menu from '../Menu'
 
 type Props = {
   onClickWishList?: () => void
@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({ onClickWishList, goBack }) => {
           <TextWishList>Wishlist</TextWishList>
         </WrapperWishList>
 
-        <UserIcon />
+        <Menu />
       </ContentRight>
     </Container>
   )
