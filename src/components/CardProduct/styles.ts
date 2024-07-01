@@ -1,10 +1,8 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-import { CiHeart } from 'react-icons/ci'
 import { getTheme, pxToRem } from '@/styles'
 
-const baseWhite = getTheme('baseWhite')
 const shadowCard = getTheme('shadowCard')
 const tertiary = getTheme('tertiary')
 const info = getTheme('info')
@@ -28,18 +26,6 @@ export const ImageProduct = styled(Image).attrs({
   width: 280,
   height: 280,
 })``
-
-export const FavoriteIcon = styled(CiHeart).attrs((props) => ({
-  size: 30,
-  color: baseWhite(props),
-}))`
-  background-color: red;
-  border-radius: 50%;
-
-  position: absolute;
-  right: ${pxToRem(8)};
-  top: ${pxToRem(8)};
-`
 
 export const Content = styled.div`
   flex: 1;

@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Container,
-  FavoriteIcon,
   HeaderImage,
   ImageProduct,
   Content,
@@ -12,8 +11,15 @@ import {
   NewPrice,
 } from './styles'
 import StarRating from '../StarRating'
+import Favorite from '../Favorite'
 
 const CardProduct: React.FC = () => {
+  const [isFavorite, setIsFavorite] = useState(false)
+
+  const handleFavorite = () => {
+    setIsFavorite(!isFavorite)
+  }
+
   return (
     <Container>
       <HeaderImage>
@@ -21,7 +27,7 @@ const CardProduct: React.FC = () => {
           src="https://static.netshoes.com.br/produtos/tenis-adidas-breaknet-masculino/28/NQQ-4378-028/NQQ-4378-028_zoom1.jpg?ts=1697561389&ims=544x"
           alt="Meia Olympikus"
         />
-        <FavoriteIcon />
+        <Favorite isFavorite={isFavorite} handleFavorite={handleFavorite} />
       </HeaderImage>
 
       <Content>
