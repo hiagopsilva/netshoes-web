@@ -6,7 +6,7 @@ import { Container } from './styles'
 export default function Home() {
   return (
     <Container>
-      <Header />
+      <Header onClickWishList={() => {}} />
       <h1>Hello Netshoes</h1>
     </Container>
   )
