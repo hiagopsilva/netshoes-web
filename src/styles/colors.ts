@@ -11,6 +11,8 @@ const theme = {
   tertiary: '#333',
   quaternary: '#f5f5f5',
   baseWhite: '#fff',
+
+  shadowCard: 'rgba(99,99,99,0.5)',
 }
 
 export default theme
