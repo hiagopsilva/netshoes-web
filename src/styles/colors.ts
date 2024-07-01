@@ -10,6 +10,7 @@ const theme = {
   secondary: '#fffff',
   tertiary: '#333',
   quaternary: '#f5f5f5',
+  baseWhite: '#fff',
 }
 
 export default theme
