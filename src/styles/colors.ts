@@ -13,6 +13,9 @@ const theme = {
   baseWhite: '#fff',
 
   shadowCard: 'rgba(99,99,99,0.5)',
+
+  favorite: '#f00',
+  noFavorite: '#C0CDCD',
 }
 
 export default theme
