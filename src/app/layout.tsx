@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import { GlobalStyles, theme } from '@/styles'
 
-export const metadata: Metadata = {
-  title: 'Netshoes',
-  description: 'Conecta Você ao Esporte',
-}
+import { ThemeProvider } from 'styled-components'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
@@ -14,8 +14,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ThemeProvider theme={theme}>
+      <html lang="pt-BR">
+        <body className={inter.className}>{children}</body>
+        <GlobalStyles />
+      </html>
+    </ThemeProvider>
   )
 }
