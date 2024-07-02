@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import React, { useEffect, useState } from 'react'
-import { Content } from './styles'
 import { useRouter } from 'next/navigation'
 import HistoricPage from '@/components/HistoricPage/page'
 import { WrapperProducts } from '../styles'
@@ -10,6 +9,7 @@ import { request } from '@/services/request'
 import CardProduct from '@/components/CardProduct'
 import { useSelector } from 'react-redux'
 import WrapperContainer from '@/components/WrapperContainer'
+import ContentPage from '@/components/ContentPage'
 
 export default function wishList() {
   const [products, setProducts] = useState([])
@@ -63,7 +63,7 @@ export default function wishList() {
     <WrapperContainer loading={loading}>
       <Header goBack={goBack}></Header>
 
-      <Content>
+      <ContentPage>
         <HistoricPage />
         <WrapperProducts>
           {products.map((item) => (
@@ -74,7 +74,7 @@ export default function wishList() {
             />
           ))}
         </WrapperProducts>
-      </Content>
+      </ContentPage>
     </WrapperContainer>
   )
 }
