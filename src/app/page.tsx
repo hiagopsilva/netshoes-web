@@ -1,3 +1,4 @@
+/* eslint-disable  */
 'use client'
 
 import Header from '@/components/Header'
@@ -7,9 +8,14 @@ import HistoricPage from '@/components/HistoricPage/page'
 import CardProduct from '@/components/CardProduct'
 import { useEffect, useState } from 'react'
 import { request } from '@/services/request'
+import { productActions } from '@/store/product.store'
+import { useDispatch } from 'react-redux'
 
 export default function Home() {
   const [products, setProducts] = useState([])
+
+  const dispatch = useDispatch()
+
   const router = useRouter()
 
   const handleWishList = () => {
@@ -22,6 +28,7 @@ export default function Home() {
 
       if (response) {
         setProducts(response.data)
+        dispatch(productActions.addListProducts(response.data))
       }
     } catch (error) {
       console.log('Error to get products ')

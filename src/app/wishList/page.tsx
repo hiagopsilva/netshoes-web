@@ -1,17 +1,58 @@
 'use client'
 
 import Header from '@/components/Header'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Content } from './styles'
 import { useRouter } from 'next/navigation'
 import HistoricPage from '@/components/HistoricPage/page'
+import { WrapperProducts } from '../styles'
+import { request } from '@/services/request'
+import CardProduct from '@/components/CardProduct'
+import { useSelector } from 'react-redux'
 
 export default function wishList() {
+  const [products, setProducts] = useState([])
+
   const router = useRouter()
 
   const goBack = () => {
     router.push('/wishList')
   }
+
+  const handleProducts = async () => {
+    try {
+      const response = await request.get('/product/')
+
+      if (response) {
+        setProducts(response.data)
+      }
+    } catch (error) {
+      console.log('Error to get products ')
+    }
+  }
+
+  const handleFavorite = async (productId: string, isFavorite: boolean) => {
+    try {
+      const response = await request.post('/product/favorite', {
+        productId,
+        isFavorite: !isFavorite,
+      })
+
+      if (response) {
+        await handleProducts()
+      }
+    } catch (error) {
+      console.log('Error to get products')
+    }
+  }
+
+  const values = useSelector((state: { list: [] }) => state.list)
+
+  useEffect(() => {
+    setProducts(
+      values.filter((product: { isFavorite: boolean }) => product.isFavorite),
+    )
+  }, [values])
 
   return (
     <Container>
@@ -19,7 +60,15 @@ export default function wishList() {
 
       <Content>
         <HistoricPage />
-        <h1>Hello Netshoes</h1>
+        <WrapperProducts>
+          {products.map((item) => (
+            <CardProduct
+              key={item}
+              data={item}
+              handleFavorite={handleFavorite}
+            />
+          ))}
+        </WrapperProducts>
       </Content>
     </Container>
   )

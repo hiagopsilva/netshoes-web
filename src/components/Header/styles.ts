@@ -38,6 +38,8 @@ export const WrapperWishList = styled.div`
   align-items: center;
 
   margin-right: ${pxToRem(48)};
+
+  cursor: pointer;
 `
 
 export const WishListIcon = styled(CiHeart).attrs({
