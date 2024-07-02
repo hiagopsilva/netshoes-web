@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Container,
   HeaderImage,
@@ -13,25 +13,25 @@ import {
 import StarRating from '../StarRating'
 import Favorite from '../Favorite'
 
-const CardProduct: React.FC = () => {
-  const [isFavorite, setIsFavorite] = useState(false)
+type Props = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any
+  handleFavorite: (productId: string, isFavorite: boolean) => void
+}
 
-  const handleFavorite = () => {
-    setIsFavorite(!isFavorite)
-  }
-
+const CardProduct: React.FC<Props> = ({ data, handleFavorite }) => {
   return (
     <Container>
       <HeaderImage>
-        <ImageProduct
-          src="https://static.netshoes.com.br/produtos/tenis-adidas-breaknet-masculino/28/NQQ-4378-028/NQQ-4378-028_zoom1.jpg?ts=1697561389&ims=544x"
-          alt="Meia Olympikus"
+        <ImageProduct src={data.image} alt={data.name} />
+        <Favorite
+          isFavorite={data.isFavorite}
+          handleFavorite={() => handleFavorite(data._id, data.isFavorite)}
         />
-        <Favorite isFavorite={isFavorite} handleFavorite={handleFavorite} />
       </HeaderImage>
 
       <Content>
-        <Title>Tênis Adidas Breaknet Masculino</Title>
+        <Title>{data.name}</Title>
 
         <WrapperStars>
           <StarRating value={2.5} />

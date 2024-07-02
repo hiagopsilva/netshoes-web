@@ -1,24 +1,21 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
-const counterSlice = createSlice({
-  name: 'counter',
+const productSlice = createSlice({
+  name: 'product',
   initialState: {
-    value: 0,
+    list: [],
   },
   reducers: {
-    incremented: (state) => {
-      state.value += 1
-    },
-    decremented: (state) => {
-      state.value -= 1
+    addListProducts: (state, action) => {
+      state.list = action.payload
     },
   },
 })
 
-const productActions = counterSlice.actions
+const productActions = productSlice.actions
 
 const productStore = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: productSlice.reducer,
 })
 
 export { productStore, productActions }

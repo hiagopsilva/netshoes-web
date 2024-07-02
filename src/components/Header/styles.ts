@@ -19,6 +19,13 @@ export const Container = styled.div`
   justify-content: space-between;
 `
 
+export const ButtonLogo = styled.button`
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+`
+
 export const Logo = styled(Image).attrs({
   src: require('../../assets/logo.png'),
   alt: 'Netshoes',
@@ -38,6 +45,8 @@ export const WrapperWishList = styled.div`
   align-items: center;
 
   margin-right: ${pxToRem(48)};
+
+  cursor: pointer;
 `
 
 export const WishListIcon = styled(CiHeart).attrs({

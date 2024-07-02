@@ -6,6 +6,8 @@ import { GlobalStyles, theme } from '@/styles'
 
 import { ThemeProvider } from 'styled-components'
 
+import { Provider } from 'react-redux'
+import { productStore } from '@/store/product.store'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
@@ -14,11 +16,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ThemeProvider theme={theme}>
-      <html lang="pt-BR">
-        <body className={inter.className}>{children}</body>
-        <GlobalStyles />
-      </html>
-    </ThemeProvider>
+    <Provider store={productStore}>
+      <ThemeProvider theme={theme}>
+        <html lang="pt-BR">
+          <body className={inter.className}>{children}</body>
+
+          <GlobalStyles />
+        </html>
+      </ThemeProvider>
+    </Provider>
   )
 }

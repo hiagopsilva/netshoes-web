@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  ButtonLogo,
   Container,
   ContentRight,
   Logo,
@@ -17,7 +18,9 @@ type Props = {
 const Header: React.FC<Props> = ({ onClickWishList, goBack }) => {
   return (
     <Container>
-      <Logo onClick={goBack} />
+      <ButtonLogo onClick={goBack}>
+        <Logo />
+      </ButtonLogo>
 
       <ContentRight>
         <WrapperWishList onClick={onClickWishList}>

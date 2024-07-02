@@ -1,41 +1,84 @@
+/* eslint-disable  */
 'use client'
 
 import Header from '@/components/Header'
-import { Container, Content } from './styles'
+import { Container, Content, WrapperProducts } from './styles'
 import { useRouter } from 'next/navigation'
 import HistoricPage from '@/components/HistoricPage/page'
 import CardProduct from '@/components/CardProduct'
+import { useEffect, useState } from 'react'
+import { request } from '@/services/request'
+import { productActions } from '@/store/product.store'
+import { useDispatch } from 'react-redux'
+import WrapperContainer from '@/components/WrapperContainer'
 
 export default function Home() {
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch()
+
   const router = useRouter()
 
   const handleWishList = () => {
     router.push('/wishList')
   }
 
+  const handleProducts = async () => {
+    try {
+      const response = await request.get('/product')
+
+      if (response) {
+        setProducts(response.data)
+        dispatch(productActions.addListProducts(response.data))
+      }
+    } catch (error) {
+      console.log('Error to get products ')
+    }
+  }
+
+  const handleFavorite = async (productId: string, isFavorite: boolean) => {
+    try {
+      setLoading(true)
+      const response = await request.post('/product/favorite', {
+        productId,
+        isFavorite: !isFavorite,
+      })
+
+      if (response) {
+        await handleProducts()
+      }
+    } catch (error) {
+      console.log('Error to get products')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    setLoading(true)
+    handleProducts()
+    setLoading(false)
+  }, [])
+
   return (
-    <Container>
+    <WrapperContainer loading={loading}>
+
       <Header onClickWishList={handleWishList} />
 
       <Content>
         <HistoricPage />
 
-        {/* <h1>Hello Netshoes</h1> */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-
-            padding: '0 24px',
-            marginTop: '24px',
-          }}
-        >
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <CardProduct key={item} />
+        <WrapperProducts>
+          {products.map((item) => (
+            <CardProduct
+              key={item}
+              data={item}
+              handleFavorite={handleFavorite}
+            />
           ))}
-        </div>
+        </WrapperProducts>
       </Content>
-    </Container>
+    </WrapperContainer>
   )
 }
