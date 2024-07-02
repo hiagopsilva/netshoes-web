@@ -14,18 +14,35 @@ export const Container = styled.div`
   margin: 0 1% ${pxToRem(24)};
 
   box-shadow: 4px 4px 8px ${shadowCard};
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const HeaderImage = styled.div`
   width: ${pxToRem(280)};
 
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const ImageProduct = styled(Image).attrs({
   width: 280,
   height: 280,
-})``
+})`
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
+`
 
 export const Content = styled.div`
   flex: 1;
