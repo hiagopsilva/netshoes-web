@@ -22,18 +22,6 @@ export default function wishList() {
     router.push('/wishList')
   }
 
-  const handleProducts = async () => {
-    try {
-      const response = await request.get('/product/')
-
-      if (response) {
-        setProducts(response.data)
-      }
-    } catch (error) {
-      console.log('Error to get products ')
-    }
-  }
-
   const handleFavorite = async (productId: string, isFavorite: boolean) => {
     try {
       setLoading(true)
@@ -43,7 +31,8 @@ export default function wishList() {
       })
 
       if (response) {
-        await handleProducts()
+        setProducts(response.data)
+        localStorage.setItem('PRODUCTS', JSON.stringify(response.data))
       }
     } catch (error) {
       console.log('Error to get products')
@@ -56,9 +45,15 @@ export default function wishList() {
 
   useEffect(() => {
     setLoading(true)
-    setProducts(
-      values.filter((product: { isFavorite: boolean }) => product.isFavorite),
-    )
+
+    if (values.length === 0) {
+      setProducts(JSON.parse(localStorage.getItem('PRODUCTS') || '[]'))
+    } else {
+      setProducts(
+        values.filter((product: { isFavorite: boolean }) => product.isFavorite),
+      )
+    }
+
     setLoading(false)
   }, [values])
 
