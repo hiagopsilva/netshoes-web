@@ -19,6 +19,13 @@ export const Content = styled.div`
   padding: ${pxToRem(24)} ${pxToRem(64)};
 `
 
-export const WrapperHistoricPage = styled.div`
-  background-color: red;
+export const WrapperHistoricPage = styled.div``
+
+export const WrapperProducts = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding: 0 ${pxToRem(24)};
+  margin-top: ${pxToRem(24)};
 `
