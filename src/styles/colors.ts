@@ -13,6 +13,7 @@ const theme = {
   baseWhite: '#fff',
 
   shadowCard: 'rgba(99,99,99,0.5)',
+  shadowWrapperLoading: 'rgba(0,0,0,0.2)',
 
   favorite: '#f00',
   noFavorite: '#C0CDCD',

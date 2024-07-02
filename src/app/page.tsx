@@ -10,9 +10,11 @@ import { useEffect, useState } from 'react'
 import { request } from '@/services/request'
 import { productActions } from '@/store/product.store'
 import { useDispatch } from 'react-redux'
+import WrapperContainer from '@/components/WrapperContainer'
 
 export default function Home() {
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch()
 
@@ -37,6 +39,7 @@ export default function Home() {
 
   const handleFavorite = async (productId: string, isFavorite: boolean) => {
     try {
+      setLoading(true)
       const response = await request.post('/product/favorite', {
         productId,
         isFavorite: !isFavorite,
@@ -47,15 +50,20 @@ export default function Home() {
       }
     } catch (error) {
       console.log('Error to get products')
+    } finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
+    setLoading(true)
     handleProducts()
+    setLoading(false)
   }, [])
 
   return (
-    <Container>
+    <WrapperContainer loading={loading}>
+
       <Header onClickWishList={handleWishList} />
 
       <Content>
@@ -71,6 +79,6 @@ export default function Home() {
           ))}
         </WrapperProducts>
       </Content>
-    </Container>
+    </WrapperContainer>
   )
 }

@@ -2,16 +2,19 @@
 
 import Header from '@/components/Header'
 import React, { useEffect, useState } from 'react'
-import { Container, Content } from './styles'
+import { Content } from './styles'
 import { useRouter } from 'next/navigation'
 import HistoricPage from '@/components/HistoricPage/page'
 import { WrapperProducts } from '../styles'
 import { request } from '@/services/request'
 import CardProduct from '@/components/CardProduct'
 import { useSelector } from 'react-redux'
+import WrapperContainer from '@/components/WrapperContainer'
 
 export default function wishList() {
   const [products, setProducts] = useState([])
+
+  const [loading, setLoading] = useState(false)
 
   const router = useRouter()
 
@@ -33,6 +36,7 @@ export default function wishList() {
 
   const handleFavorite = async (productId: string, isFavorite: boolean) => {
     try {
+      setLoading(true)
       const response = await request.post('/product/favorite', {
         productId,
         isFavorite: !isFavorite,
@@ -43,19 +47,23 @@ export default function wishList() {
       }
     } catch (error) {
       console.log('Error to get products')
+    } finally {
+      setLoading(false)
     }
   }
 
   const values = useSelector((state: { list: [] }) => state.list)
 
   useEffect(() => {
+    setLoading(true)
     setProducts(
       values.filter((product: { isFavorite: boolean }) => product.isFavorite),
     )
+    setLoading(false)
   }, [values])
 
   return (
-    <Container>
+    <WrapperContainer loading={loading}>
       <Header goBack={goBack}></Header>
 
       <Content>
@@ -70,6 +78,6 @@ export default function wishList() {
           ))}
         </WrapperProducts>
       </Content>
-    </Container>
+    </WrapperContainer>
   )
 }

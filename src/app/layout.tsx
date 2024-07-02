@@ -20,6 +20,7 @@ export default function RootLayout({
       <ThemeProvider theme={theme}>
         <html lang="pt-BR">
           <body className={inter.className}>{children}</body>
+
           <GlobalStyles />
         </html>
       </ThemeProvider>
