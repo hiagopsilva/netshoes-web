@@ -19,6 +19,13 @@ export const Container = styled.div`
   justify-content: space-between;
 `
 
+export const ButtonLogo = styled.button`
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+`
+
 export const Logo = styled(Image).attrs({
   src: require('../../assets/logo.png'),
   alt: 'Netshoes',

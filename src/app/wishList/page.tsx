@@ -19,7 +19,7 @@ export default function wishList() {
   const router = useRouter()
 
   const goBack = () => {
-    router.push('/wishList')
+    router.back()
   }
 
   const handleFavorite = async (productId: string, isFavorite: boolean) => {
@@ -49,9 +49,11 @@ export default function wishList() {
     if (values.length === 0) {
       setProducts(JSON.parse(localStorage.getItem('PRODUCTS') || '[]'))
     } else {
-      setProducts(
-        values.filter((product: { isFavorite: boolean }) => product.isFavorite),
+      const valuesFiltered = values.filter(
+        (product: { isFavorite: boolean }) => product.isFavorite,
       )
+      setProducts(valuesFiltered)
+      localStorage.setItem('PRODUCTS', JSON.stringify(valuesFiltered))
     }
 
     setLoading(false)
