@@ -47,8 +47,6 @@ export const ContentRight = styled.div`
   display: flex;
   flex-direction: row;
 
-  background-color: red;
-
   @media (max-width: 768px) {
     display: flex;
     flex-direction: row;

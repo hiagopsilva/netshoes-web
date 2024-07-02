@@ -17,6 +17,10 @@ export const Content = styled.div`
 
   flex-direction: column;
   padding: ${pxToRem(24)} ${pxToRem(64)};
+
+  @media (max-width: 768px) {
+    padding: ${pxToRem(24)} ${pxToRem(24)};
+  }
 `
 
 export const WrapperHistoricPage = styled.div``
