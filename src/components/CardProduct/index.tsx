@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Container,
   HeaderImage,
@@ -16,22 +16,17 @@ import Favorite from '../Favorite'
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any
+  handleFavorite: (productId: string, isFavorite: boolean) => void
 }
 
-const CardProduct: React.FC<Props> = ({ data }) => {
-  const [isFavorite, setIsFavorite] = useState(false)
-
-  const handleFavorite = () => {
-    setIsFavorite(!isFavorite)
-  }
-
+const CardProduct: React.FC<Props> = ({ data, handleFavorite }) => {
   return (
     <Container>
       <HeaderImage>
         <ImageProduct src={data.image} alt={data.name} />
         <Favorite
           isFavorite={data.isFavorite}
-          handleFavorite={handleFavorite}
+          handleFavorite={() => handleFavorite(data._id, data.isFavorite)}
         />
       </HeaderImage>
 

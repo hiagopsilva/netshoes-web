@@ -28,6 +28,21 @@ export default function Home() {
     }
   }
 
+  const handleFavorite = async (productId: string, isFavorite: boolean) => {
+    try {
+      const response = await request.post('/product/favorite', {
+        productId,
+        isFavorite: !isFavorite,
+      })
+
+      if (response) {
+        await handleProducts()
+      }
+    } catch (error) {
+      console.log('Error to get products')
+    }
+  }
+
   useEffect(() => {
     handleProducts()
   }, [])
@@ -41,7 +56,11 @@ export default function Home() {
 
         <WrapperProducts>
           {products.map((item) => (
-            <CardProduct key={item} data={item} />
+            <CardProduct
+              key={item}
+              data={item}
+              handleFavorite={handleFavorite}
+            />
           ))}
         </WrapperProducts>
       </Content>
