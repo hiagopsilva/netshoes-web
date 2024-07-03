@@ -19,6 +19,9 @@ export default function RootLayout({
     <Provider store={productStore}>
       <ThemeProvider theme={theme}>
         <html lang="pt-BR">
+          <head>
+            <meta name="theme-color" content="#5c2c84" />
+          </head>
           <body className={inter.className}>{children}</body>
 
           <GlobalStyles />
