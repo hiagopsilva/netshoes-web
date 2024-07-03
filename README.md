@@ -7,7 +7,7 @@
 ## DEMO
 <div style="display:flex;justify-content:center;align-items:center">
     <img src="./src/assets/demo/demo-web.png" alt="Descrição da imagem" width="490" height="300" style=""/>
-    <img src="./src/assets/demo-mobile.png" alt="Descrição da imagem" width="180" style=""/>
+    <img src="./src/assets/demo/demo-mobile.png" alt="Descrição da imagem" width="180" style=""/>
 </div>
 
 ## Tecnologias Utilizadas
