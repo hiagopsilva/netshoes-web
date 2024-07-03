@@ -17,6 +17,7 @@
 - Redux
 - Axios
 - Styled Components
+- LocalStorage
 
 ## Configuração do Projeto
 
