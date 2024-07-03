@@ -14,8 +14,7 @@ import StarRating from '../StarRating'
 import Favorite from '../Favorite'
 
 type Props = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any
+  data: ProductType.Root
   handleFavorite: (productId: string, isFavorite: boolean) => void
 }
 

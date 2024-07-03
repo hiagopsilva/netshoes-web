@@ -12,7 +12,7 @@ import WrapperContainer from '@/components/WrapperContainer'
 import ContentPage from '@/components/ContentPage'
 
 export default function wishList() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<ProductType.Root[]>([])
 
   const [loading, setLoading] = useState(false)
 
@@ -66,9 +66,9 @@ export default function wishList() {
       <ContentPage>
         <HistoricPage />
         <WrapperProducts>
-          {products.map((item) => (
+          {products.map((item: ProductType.Root) => (
             <CardProduct
-              key={item}
+              key={item._id}
               data={item}
               handleFavorite={handleFavorite}
             />
