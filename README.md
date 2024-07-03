@@ -1,6 +1,6 @@
-<div style="text-align:center">
+<div align="center">
   <img src="./src/assets/logo.png" alt="Descrição da imagem" width="100" style=""/>
-  <h3>Netshoes - WishList</h3>
+  <h3>Projeto - NETSHOES</h3>
 </div>
 
 
