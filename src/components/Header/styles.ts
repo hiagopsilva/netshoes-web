@@ -11,12 +11,18 @@ export const Container = styled.div`
   background-color: ${primary};
 
   width: 100%;
+  height: ${pxToRem(80)};
   padding: ${pxToRem(4)} ${pxToRem(64)};
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    height: ${pxToRem(68)};
+    padding: ${pxToRem(4)} ${pxToRem(24)};
+  }
 `
 
 export const ButtonLogo = styled.button`
@@ -24,6 +30,10 @@ export const ButtonLogo = styled.button`
   border: none;
 
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Logo = styled(Image).attrs({
@@ -36,6 +46,14 @@ export const Logo = styled(Image).attrs({
 export const ContentRight = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+  }
 `
 
 export const WrapperWishList = styled.div`

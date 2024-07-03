@@ -2,7 +2,7 @@
 'use client'
 
 import Header from '@/components/Header'
-import { Container, Content, WrapperProducts } from './styles'
+import {  WrapperProducts } from './styles'
 import { useRouter } from 'next/navigation'
 import HistoricPage from '@/components/HistoricPage/page'
 import CardProduct from '@/components/CardProduct'
@@ -11,9 +11,10 @@ import { request } from '@/services/request'
 import { productActions } from '@/store/product.store'
 import { useDispatch } from 'react-redux'
 import WrapperContainer from '@/components/WrapperContainer'
+import ContentPage from '@/components/ContentPage'
 
 export default function Home() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<ProductType.Root[]>([])
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch()
@@ -66,19 +67,19 @@ export default function Home() {
 
       <Header onClickWishList={handleWishList} />
 
-      <Content>
+      <ContentPage>
         <HistoricPage />
 
         <WrapperProducts>
-          {products.map((item) => (
+          {products.map((item: ProductType.Root) => (
             <CardProduct
-              key={item}
+              key={item._id}
               data={item}
               handleFavorite={handleFavorite}
             />
           ))}
         </WrapperProducts>
-      </Content>
+      </ContentPage>
     </WrapperContainer>
   )
 }

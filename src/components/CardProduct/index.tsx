@@ -12,10 +12,10 @@ import {
 } from './styles'
 import StarRating from '../StarRating'
 import Favorite from '../Favorite'
+import { formatCurrencyBR, getRandomNumber } from '@/utils/helpers'
 
 type Props = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any
+  data: ProductType.Root
   handleFavorite: (productId: string, isFavorite: boolean) => void
 }
 
@@ -34,12 +34,12 @@ const CardProduct: React.FC<Props> = ({ data, handleFavorite }) => {
         <Title>{data.name}</Title>
 
         <WrapperStars>
-          <StarRating value={2.5} />
+          <StarRating value={getRandomNumber()} />
         </WrapperStars>
 
         <WrapperPrices>
-          <OldPrice>R$ 200,00</OldPrice>
-          <NewPrice>R$ 150,00</NewPrice>
+          <OldPrice>{formatCurrencyBR('200.00')}</OldPrice>
+          <NewPrice>{formatCurrencyBR('150.00')}</NewPrice>
         </WrapperPrices>
       </Content>
     </Container>
