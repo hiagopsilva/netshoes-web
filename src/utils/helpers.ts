@@ -22,3 +22,7 @@ export const formatCurrencyBR = (value: string) => {
     currency: 'BRL',
   }).format(price)
 }
+
+export const getRandomNumber = () => {
+  return Math.floor(Math.random() * 5) + 1
+}

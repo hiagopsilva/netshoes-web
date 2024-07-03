@@ -12,7 +12,7 @@ import {
 } from './styles'
 import StarRating from '../StarRating'
 import Favorite from '../Favorite'
-import { formatCurrencyBR } from '@/utils/helpers'
+import { formatCurrencyBR, getRandomNumber } from '@/utils/helpers'
 
 type Props = {
   data: ProductType.Root
@@ -34,7 +34,7 @@ const CardProduct: React.FC<Props> = ({ data, handleFavorite }) => {
         <Title>{data.name}</Title>
 
         <WrapperStars>
-          <StarRating value={2.5} />
+          <StarRating value={getRandomNumber()} />
         </WrapperStars>
 
         <WrapperPrices>
