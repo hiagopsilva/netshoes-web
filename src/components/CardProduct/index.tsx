@@ -12,6 +12,7 @@ import {
 } from './styles'
 import StarRating from '../StarRating'
 import Favorite from '../Favorite'
+import { formatCurrencyBR } from '@/utils/helpers'
 
 type Props = {
   data: ProductType.Root
@@ -37,8 +38,8 @@ const CardProduct: React.FC<Props> = ({ data, handleFavorite }) => {
         </WrapperStars>
 
         <WrapperPrices>
-          <OldPrice>R$ 200,00</OldPrice>
-          <NewPrice>R$ 150,00</NewPrice>
+          <OldPrice>{formatCurrencyBR('200.00')}</OldPrice>
+          <NewPrice>{formatCurrencyBR('150.00')}</NewPrice>
         </WrapperPrices>
       </Content>
     </Container>
